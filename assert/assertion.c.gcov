@@ -1,0 +1,80 @@
+        -:    0:Source:assertion.c
+        -:    0:Graph:main-assertion.gcno
+        -:    0:Data:main-assertion.gcda
+        -:    0:Runs:5
+        -:    1:#include <stdio.h>
+        -:    2:#include <stdlib.h>
+        -:    3:#include <time.h>
+        -:    4:#include <ctype.h>
+        -:    5:#include <assert.h>
+        -:    6:
+        -:    7:enum alphabet
+        -:    8:{
+        -:    9:    A,
+        -:   10:    B,
+        -:   11:    C,
+        -:   12:    D,
+        -:   13:    E,
+        -:   14:    F,
+        -:   15:    G,
+        -:   16:    H,
+        -:   17:    I,
+        -:   18:    J,
+        -:   19:    K,
+        -:   20:    L,
+        -:   21:    M,
+        -:   22:    N,
+        -:   23:    O,
+        -:   24:    P,
+        -:   25:    Q,
+        -:   26:    R,
+        -:   27:    S,
+        -:   28:    T,
+        -:   29:    U,
+        -:   30:    V,
+        -:   31:    W,
+        -:   32:    X,
+        -:   33:    Y,
+        -:   34:    Z
+        -:   35:};
+        -:   36:
+        -:   37:static_assert(Z == 25, "Alphabet incomplet");
+        -:   38:
+        5:   39:int main(int argc, char *argv[])
+        -:   40:{
+       5*:   41:    assert(argc > 1);
+       28:   42:    for (int i = 1; i < argc; i++)
+        -:   43:    {
+      23*:   44:        assert(isalpha(argv[i][0]));
+        -:   45:    }
+        -:   46:
+       28:   47:    for (int i = 1; i < argc; i++)
+        -:   48:    {
+       23:   49:        int toControl = toupper(argv[i][0]) - 65;
+       23:   50:        switch (toControl)
+        -:   51:        {
+        5:   52:        case A:
+        5:   53:            printf("Voyelle - A \n");
+        5:   54:            break;
+        3:   55:        case E:
+        3:   56:            printf("Voyelle - E \n");
+        3:   57:            break;
+        2:   58:        case I:
+        2:   59:            printf("Voyelle - I \n");
+        2:   60:            break;
+        2:   61:        case O:
+        2:   62:            printf("Voyelle - O \n");
+        2:   63:            break;
+        2:   64:        case U:
+        2:   65:            printf("Voyelle - U \n");
+        2:   66:            break;
+        2:   67:        case Y:
+        2:   68:            printf("Voyelle - Y \n");
+        2:   69:            break;
+        7:   70:        default:
+        7:   71:            printf("Pas une voyelle %c \n", argv[i][0]);
+        7:   72:            break;
+        -:   73:        }
+        -:   74:    }
+        5:   75:    return 0;
+        -:   76:}
